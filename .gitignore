@@ -1,0 +1,17 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+*.log
+.streamlit/secrets.toml
+
+# Original Jupyter/notebook export - superseded by the demand_pulse package
+Bike-Sharing-Data.py
+
+# Jupyter notebook files
+*.ipynb
+.ipynb_checkpoints/
