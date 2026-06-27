@@ -562,7 +562,7 @@ with tab_model:
                 _run_train()
                 progress.progress(0.35, text="Analysing test data …")
                 _run_insights()
-                progress.progress(0.65, text="Querying Qwen 3.5 …")
+                progress.progress(0.65, text="Querying Qwen 3 …")
                 try:
                     _run_llm()
                     progress.progress(1.0, text="Complete")

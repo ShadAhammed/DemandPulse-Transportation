@@ -1,4 +1,4 @@
-"""Qwen 3.5 (via Ollama) - business overview from ML results and data patterns."""
+"""Qwen 3 (via Ollama) - business overview from ML results and data patterns."""
 
 from __future__ import annotations
 
@@ -90,9 +90,8 @@ lists of raw numbers. Prose only for sections 1-4, then a numbered action list f
 class LLMAnalyst:
     """Build and deliver the business overview prompt to a local Qwen model."""
 
-    MODEL_NAME: str = "qwen3.5"
+    MODEL_NAME: str = "qwen3:latest"
     _PREFERRED_BASES: tuple[str, ...] = (
-        "qwen3.5",
         "qwen3",
         "qwen2.5",
         "qwen2",
@@ -110,6 +109,8 @@ class LLMAnalyst:
             import ollama
 
             installed = [m["name"] for m in ollama.list().get("models", [])]
+            if cls.MODEL_NAME in installed:
+                return cls.MODEL_NAME
             for base in cls._PREFERRED_BASES:
                 for name in installed:
                     if name == base or name.startswith(base + ":"):
@@ -267,7 +268,7 @@ class LLMAnalyst:
             response = ollama.chat(
                 model=self._model,
                 messages=[{"role": "user", "content": prompt}],
-                options={"temperature": 0.3},
+                options={"temperature": 0.3, "num_ctx": 8192},
             )
             return str(response["message"]["content"])
         except Exception as exc:

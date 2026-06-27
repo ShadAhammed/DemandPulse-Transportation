@@ -30,7 +30,7 @@ The platform is mode-agnostic: bike sharing, ride-hail, transit, or any tabular 
 - Qwen model pulled locally:
 
 ```
-ollama pull qwen3.5
+ollama pull qwen3
 ```
 
 ---
